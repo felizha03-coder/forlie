@@ -1,0 +1,342 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Press Start 2P", monospace;
+  --font-silk: "Silkscreen", monospace;
+  --font-vt: "VT323", monospace;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #050608;
+    color: #e2e8f0;
+    font-family: "VT323", monospace;
+    overflow-x: hidden;
+  }
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Deep Pitch-Black & Charcoal Arcade Atmosphere */
+.lie-backdrop {
+  background:
+    radial-gradient(circle at 22% 16%, rgba(16, 185, 129, 0.08) 0%, transparent 42%),
+    radial-gradient(circle at 80% 24%, rgba(148, 163, 184, 0.06) 0%, transparent 44%),
+    radial-gradient(circle at 50% 88%, rgba(5, 6, 8, 0.96) 0%, transparent 62%),
+    linear-gradient(175deg, #050608 0%, #090c10 48%, #0d1218 82%, #050608 100%);
+}
+
+/* Subtle Analog Film Grain */
+.lie-grain {
+  background-image: radial-gradient(rgba(226, 232, 240, 0.07) 1px, transparent 0);
+  background-size: 3px 3px;
+}
+
+/* Arcade Cabinet Pitch-Black Brushed Metallic Frame */
+.arcade-cabinet {
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.06) 0%, transparent 25%),
+    linear-gradient(180deg, #161b22 0%, #0c0f12 45%, #07090b 85%, #050608 100%);
+  border: 2px solid rgba(52, 211, 153, 0.28);
+  box-shadow:
+    0 34px 72px rgba(0, 0, 0, 0.88),
+    0 0 42px rgba(16, 185, 129, 0.14),
+    inset 0 2px 4px rgba(226, 232, 240, 0.12),
+    inset 0 -10px 24px rgba(0, 0, 0, 0.9);
+}
+
+.arcade-marquee {
+  background:
+    linear-gradient(90deg, rgba(16, 185, 129, 0.18) 0%, rgba(52, 211, 153, 0.26) 50%, rgba(16, 185, 129, 0.18) 100%),
+    #080c0f;
+  box-shadow:
+    0 0 22px rgba(16, 185, 129, 0.32),
+    inset 0 0 14px rgba(52, 211, 153, 0.22);
+}
+
+.arcade-deck {
+  background: linear-gradient(180deg, #1b222a 0%, #101419 52%, #090b0e 100%);
+  border-top: 2px solid rgba(203, 213, 225, 0.2);
+  box-shadow:
+    inset 0 3px 8px rgba(255, 255, 255, 0.08),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.85);
+}
+
+/* 3D Gunmetal & Pitch-Black Metallic Game Boy Shell */
+.gb-dark-shell {
+  background:
+    linear-gradient(150deg, rgba(226, 232, 240, 0.12) 0%, transparent 26%),
+    linear-gradient(180deg, #212832 0%, #161b22 36%, #0c0f12 76%, #050608 100%);
+  border: 2px solid rgba(148, 163, 184, 0.34);
+  box-shadow:
+    0 32px 68px rgba(0, 0, 0, 0.9),
+    0 14px 0 #030405,
+    0 20px 30px rgba(0, 0, 0, 0.78),
+    0 0 36px rgba(16, 185, 129, 0.1),
+    inset 0 3px 6px rgba(226, 232, 240, 0.18),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.85);
+}
+
+/* Glossy Dark Glass Bezel */
+.gb-dark-bezel {
+  background: linear-gradient(145deg, #12161b 0%, #090b0e 50%, #040506 100%);
+  border: 2px solid rgba(148, 163, 184, 0.28);
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.1),
+    inset 0 -4px 10px rgba(0, 0, 0, 0.9),
+    0 8px 18px rgba(0, 0, 0, 0.75);
+}
+
+/* Phosphor Emerald Dark LCD */
+.gb-lcd-active {
+  background:
+    radial-gradient(circle at 50% 35%, #0c1914 0%, #07100c 62%, #040807 100%);
+  color: #e2e8f0;
+}
+
+.gb-lcd-locked {
+  background:
+    radial-gradient(circle at 50% 45%, #09120e 0%, #040607 85%);
+  color: #34d399;
+}
+
+/* CRT Scanlines & Subtle Flicker */
+.crt-scanlines {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.34) 50%, transparent 50%),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.025) 50%, transparent 50%);
+  background-size: 100% 3px, 4px 100%;
+}
+
+.crt-flicker {
+  animation: crtFlicker 4.5s infinite;
+}
+
+/* Physical 3D Dark Gunmetal D-Pad */
+.gb-dpad-arm {
+  background: linear-gradient(160deg, #27303c 0%, #161b22 70%, #090c10 100%);
+  box-shadow:
+    0 4px 0 #030405,
+    inset 0 1.5px 2px rgba(226, 232, 240, 0.22);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.gb-dpad-arm.is-pressed,
+.gb-dpad-arm:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 1px 0 #030405,
+    inset 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Glowing Emerald Illuminated Round Action Buttons (A & B) */
+.gb-emerald-btn {
+  background: radial-gradient(circle at 32% 28%, #a7f3d0 0%, #34d399 26%, #10b981 62%, #065f46 100%);
+  border: 2px solid rgba(167, 243, 208, 0.72);
+  box-shadow:
+    0 5px 0 #022c22,
+    0 8px 16px rgba(16, 185, 129, 0.34),
+    inset 0 2px 3px rgba(255, 255, 255, 0.55);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.gb-emerald-btn.is-pressed,
+.gb-emerald-btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 2px 0 #022c22,
+    0 4px 12px rgba(16, 185, 129, 0.55),
+    inset 0 2px 4px rgba(2, 44, 34, 0.65);
+}
+
+/* Metallic Select / Start Pills */
+.gb-pill-dark {
+  background: linear-gradient(180deg, #475569 0%, #27313f 55%, #161b22 100%);
+  border: 1.5px solid rgba(203, 213, 225, 0.35);
+  box-shadow:
+    0 3px 0 #030405,
+    inset 0 1px 1px rgba(226, 232, 240, 0.3);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.gb-pill-dark.is-pressed,
+.gb-pill-dark:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #030405;
+}
+
+/* Holographic Silver & Emerald SD Foil Halo */
+.holo-silver-foil {
+  background: linear-gradient(
+    125deg,
+    rgba(203, 213, 225, 0.25) 0%,
+    rgba(52, 211, 153, 0.32) 25%,
+    rgba(248, 250, 252, 0.38) 48%,
+    rgba(56, 189, 248, 0.25) 70%,
+    rgba(132, 204, 22, 0.28) 100%
+  );
+  background-size: 240% 240%;
+  animation: holoShimmer 4.6s ease-in-out infinite;
+}
+
+/* 3D Card Flip */
+.card-perspective {
+  perspective: 900px;
+}
+
+.card-inner-3d {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.card-inner-3d.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+}
+
+.card-face-back {
+  transform: rotateY(180deg);
+}
+
+/* Dark Graphite Letter Terminal Sheet */
+.letter-sheet-dark {
+  background-color: #0b1110;
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 23px,
+      rgba(16, 185, 129, 0.14) 23px,
+      rgba(16, 185, 129, 0.14) 24px
+    ),
+    radial-gradient(circle at 90% 8%, rgba(52, 211, 153, 0.08) 0%, transparent 42%);
+}
+
+@keyframes holoShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes crtFlicker {
+  0%, 96%, 100% { opacity: 1; }
+  97% { opacity: 0.96; }
+  98% { opacity: 0.99; }
+  99% { opacity: 0.94; }
+}
+
+@keyframes floatGentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes capsuleShake {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-6deg) scale(1.06); }
+  40% { transform: rotate(6deg) scale(1.08); }
+  60% { transform: rotate(-5deg) scale(1.08); }
+  80% { transform: rotate(4deg) scale(1.04); }
+}
+
+@keyframes spinReel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pixelGlitch {
+  0% { transform: translate(0, 0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-4px, 2px); filter: hue-rotate(24deg) brightness(1.3); }
+  40% { transform: translate(4px, -2px); filter: contrast(1.45); }
+  60% { transform: translate(-2px, -1px); filter: hue-rotate(-20deg) brightness(1.2); }
+  80% { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); filter: none; }
+}
+
+@keyframes sdSlideIn {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(-54px) translateX(-48px) scale(0.76) rotate(-6deg);
+    opacity: 0.96;
+  }
+  100% {
+    transform: translateY(-110px) translateX(-95px) scale(0.32) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3.2s ease-in-out infinite;
+}
+
+.animate-capsule-shake {
+  animation: capsuleShake 0.48s ease-in-out;
+}
+
+.animate-spin-reel {
+  animation: spinReel 2.8s linear infinite;
+}
+
+.animate-pixel-glitch {
+  animation: pixelGlitch 0.42s steps(2, end) 2;
+}
+
+.animate-sd-slide {
+  animation: sdSlideIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Custom thin emerald LCD scrollbar */
+.lcd-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+.lcd-scroll::-webkit-scrollbar-track {
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 99px;
+}
+.lcd-scroll::-webkit-scrollbar-thumb {
+  background: rgba(52, 211, 153, 0.45);
+  border-radius: 99px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-gentle,
+  .animate-capsule-shake,
+  .animate-spin-reel,
+  .animate-pixel-glitch,
+  .holo-silver-foil,
+  .crt-flicker {
+    animation: none !important;
+  }
+  .card-inner-3d {
+    transition: none;
+  }
+}
